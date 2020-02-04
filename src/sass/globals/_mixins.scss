@@ -1,0 +1,15 @@
+//https://engageinteractive.co.uk/blog/top-10-scss-mixins#mediaqueries
+//takes mutiple parameteres
+//1st parameter is width in px from directory: @include mq('media-1400'){}
+//2nd parameter is breakpoint type: min or max as a string: @include mq('media-1400', 'min'){}
+//  default is set to 'max'
+@mixin media-query($width, $type: max) {
+
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}

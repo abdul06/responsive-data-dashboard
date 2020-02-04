@@ -1,0 +1,24 @@
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-family-primary;
+}
+
+h2 {
+  font-size: $font-size-h2;
+  line-height: 28px;
+  font-weight: 400;
+}

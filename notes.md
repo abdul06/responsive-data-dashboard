@@ -1,4 +1,6 @@
 <!--- Repo  https://github.com/abdul06/responsive-data-dashboard -->
+# Sass setup
+  - https://scotch.io/tutorials/using-sass-with-the-angular-cli
 
 # Charts links
  -  highcharts - https://www.npmjs.com/package/angular-highcharts

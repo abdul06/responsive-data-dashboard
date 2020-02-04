@@ -2,14 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DashboardsComponent } from './componetns/dashboards/dashboards.component';
-import { TableDataComponent } from './componetns/table-data/table-data.component';
+import { DashboardsComponent } from './components/dashboards/dashboards.component';
+import { TableDataComponent } from './components/table-data/table-data.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardsComponent,
-    TableDataComponent
+    TableDataComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule

@@ -1,0 +1,90 @@
+// -----------------------------------------
+// Colors
+// -----------------------------------------
+
+//hijabican brand colors
+$color-pomegranate: #DE1C56;
+$color-pomegranate-35: rgba(222, 28, 86, .35);
+$color-rose-white: #F7F0ED;
+$color-black: #231F20;
+$color-white: #fefefe;
+$color-yellow: #F9F399;
+$color-lime-green: #C7DA2C;
+$color-purple: #853A74;
+$color-dark-cyan: #21B2AA;
+$color-grey: #a0a0a0;
+$color-grey-35: rgba(160, 160, 160, .35);
+
+// Placeholders colors
+$placeholder-color-foreground: #161d25;
+$placeholder-color-background: #f9fafb;
+
+// Helper colors for form error states
+$color-disabled: #000000;
+$color-disabled-border: #000000;
+$color-error: #ff6d6d;
+$color-error-bg: #ffffff;
+$color-success: #000000;
+$color-success-bg: #000000;
+
+// --------------------------------------------
+// Fonts
+// --------------------------------------------
+$brandon-grotesque: 'Open Sans', 'san-serif';
+
+$font-family-primary: $brandon-grotesque;
+
+// Font Weight
+$font-weight-light:         300;
+$font-weight-regular:       400;
+$font-weight-semi-bold:     600;
+$font-weight-bold:          700;
+$font-weight-extra-bold:    800;
+
+// Font Sizes
+$font-size-x-small: 12px;
+$font-size-small:   14px;
+$font-size-base:    16px;
+$font-size-medium:  18px;
+$font-size-h1:      42px;
+$font-size-h2:      36px;
+$font-size-h3:      30px;
+
+// -----------------------------------------
+// Path
+// -----------------------------------------
+$image-path: '';
+
+// -----------------------------------------
+// Breakpoints used with the media-query mixin
+// -----------------------------------------
+$breakpoints: (
+    "phone-small":    340px,
+    "phone":          400px,
+    "phone-large":    480px,
+    "media-500":      500px,
+    "media-560":      560px,
+    "tablet-small":   640px,
+    "media-767":      767px,
+    "tablet":         768px,
+    "media-1023":     1023px,
+    "tablet-large":   1024px,
+    "media-1150":     1150px,
+    "media-1200":     1200px,
+    "desktop":        1248px,
+    "media-1300":     1300px,
+    "media-1400":     1400px,
+    "desktop-large":  1440px,  
+);
+
+// -----------------------------------------
+// Grid
+// -----------------------------------------
+$grid-max-width: 1440px;
+$max-width-1200: 1200px;
+$grid-widescreen: 1920px;
+$grid-large: 1024px;
+$grid-medium: 768px;
+$grid-gutter: 30px;
+
+

@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow: auto;
+}
+
+body {
+
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0,0,0,.25);
+    position: fixed;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s ease-out;
+    transition: all .3s ease 0s;
+  }
+
+  &.inactive:before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
