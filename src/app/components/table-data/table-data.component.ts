@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
+import { Movie } from '../../models/Movie';
 
 @Component({
   selector: 'app-table-data',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-data.component.scss']
 })
 export class TableDataComponent implements OnInit {
+
+  movies: Movie[];
   // Used to import services
-  constructor() { }
+  constructor(private _dataService: DataService) { }
 
   ngOnInit() {
+    this._dataService.getMovies().subscribe( movies => {
+      console.log(movies);
+    });
   }
 
 }
