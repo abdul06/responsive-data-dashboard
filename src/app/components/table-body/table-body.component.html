@@ -1,0 +1,10 @@
+<p>hello talib</p>
+<tbody>
+  <app-table-row *ngFor="let movie of movies" [movie]="movie">
+    <!-- test {{ movie.title }} -->
+  </app-table-row>
+
+  <tr *ngFor="let movie of movies">
+    <td>{{ movie.title }}</td>
+  </tr>
+</tbody>

@@ -3,11 +3,11 @@ import { DataService } from '../../services/data.service';
 import { Movie } from '../../models/Movie';
 
 @Component({
-  selector: 'app-table-data',
-  templateUrl: './table-data.component.html',
-  styleUrls: ['./table-data.component.scss']
+  selector: 'app-table-body',
+  templateUrl: './table-body.component.html',
+  styleUrls: ['./table-body.component.scss']
 })
-export class TableDataComponent implements OnInit {
+export class TableBodyComponent implements OnInit {
 
   movies: Movie[];
   // Used to import services
@@ -15,7 +15,8 @@ export class TableDataComponent implements OnInit {
 
   ngOnInit() {
     this._dataService.getMovies().subscribe( movies => {
-      console.log(movies);
+      this.movies = movies.slice(0,11);
+      console.log(this.movies);
     });
   }
 

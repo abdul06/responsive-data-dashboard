@@ -22,6 +22,9 @@
   - https://codepen.io/webdatarocks/pen/gdzWPJ
   
 
+# Angular component wrapping
+- https://github.com/angular/angular/issues/7857
+
 
 <!---  
 include

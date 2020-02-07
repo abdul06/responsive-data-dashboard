@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Movie } from '../../models/Movie';
 
 @Component({
   selector: 'app-table-row',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-row.component.scss']
 })
 export class TableRowComponent implements OnInit {
+  @Input() movie: Movie;
 
   constructor() { }
 

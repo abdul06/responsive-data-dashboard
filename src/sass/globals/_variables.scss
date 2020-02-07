@@ -2,22 +2,14 @@
 // Colors
 // -----------------------------------------
 
-//hijabican brand colors
-$color-pomegranate: #DE1C56;
-$color-pomegranate-35: rgba(222, 28, 86, .35);
-$color-rose-white: #F7F0ED;
-$color-black: #231F20;
-$color-white: #fefefe;
-$color-yellow: #F9F399;
-$color-lime-green: #C7DA2C;
-$color-purple: #853A74;
-$color-dark-cyan: #21B2AA;
-$color-grey: #a0a0a0;
-$color-grey-35: rgba(160, 160, 160, .35);
+//atd brand colors
+$color-red: #f0533f;
+$color-white: #ffffff;
+$color-grey: #e1ebf4;
+$color-black: #001D34;
+$color-blue: #0076be;
+$color-dk-grey: #787878;
 
-// Placeholders colors
-$placeholder-color-foreground: #161d25;
-$placeholder-color-background: #f9fafb;
 
 // Helper colors for form error states
 $color-disabled: #000000;
@@ -30,9 +22,9 @@ $color-success-bg: #000000;
 // --------------------------------------------
 // Fonts
 // --------------------------------------------
-$brandon-grotesque: 'Open Sans', 'san-serif';
+$avant-garde-gothic: 'Open Sans', 'san-serif';
 
-$font-family-primary: $brandon-grotesque;
+$font-family-primary: $avant-garde-gothic;
 
 // Font Weight
 $font-weight-light:         300;
@@ -78,13 +70,15 @@ $breakpoints: (
 );
 
 // -----------------------------------------
-// Grid
+// grid-width
 // -----------------------------------------
-$grid-max-width: 1440px;
-$max-width-1200: 1200px;
-$grid-widescreen: 1920px;
+$grid-default-width: 1440px;
+
+$grid-2x-large: 1920px;
+$grid-x-large: 1200px;
 $grid-large: 1024px;
 $grid-medium: 768px;
-$grid-gutter: 30px;
+$grid-small: 640px;
+
 
 

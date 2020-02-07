@@ -1,21 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { DashboardsComponent } from './components/dashboards/dashboards.component';
-import { TableDataComponent } from './components/table-data/table-data.component';
+import { TableComponent } from './components/table/table.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DataService } from './services/data.service';
 import { TableRowComponent } from './components/table-row/table-row.component';
+import { TableHeadComponent } from './components/table-head/table-head.component';
+import { TableBodyComponent } from './components/table-body/table-body.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardsComponent,
-    TableDataComponent,
+    TableComponent,
     DashboardComponent,
-    TableRowComponent
+    TableRowComponent,
+    TableHeadComponent,
+    TableBodyComponent
   ],
   imports: [
     BrowserModule,
