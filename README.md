@@ -1,5 +1,22 @@
 # ResponsiveDataDashboard
 
+# Angular component wrapping
+  - https://github.com/angular/angular/issues/7857
+  - https://stackoverflow.com/questions/46117522/correct-way-to-implement-wrapper-components-in-angular-4
+  - https://codeburst.io/display-a-table-using-components-with-angular-4-f13f0971666d
+
+# Services Setup
+  - https://angular.io/tutorial/toh-pt4
+# Setup Data persistance with service
+  - https://angular.io/tutorial/toh-pt6
+
+# Sass setup
+  - https://scotch.io/tutorials/using-sass-with-the-angular-cli
+
+# Charts links
+ -  highcharts - https://www.npmjs.com/package/angular-highcharts
+ - chartjs - https://jtblin.github.io/angular-chart.js/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.9.
 
 ## Development server
@@ -30,4 +47,3 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   - ng generate component [folder_name/components_name]
   ### shorthand
     - ng g c [folder_name/components_name]
-

@@ -4,12 +4,14 @@
 
 # Charts links
  -  highcharts - https://www.npmjs.com/package/angular-highcharts
+ - chartjs - https://jtblin.github.io/angular-chart.js/
  - https://www.npmjs.com/package/ng2-charts
  - https://www.npmjs.com/package/@swimlane/ngx-charts
  - https://www.highcharts.com/
  - https://ui.toast.com/tui-chart/?r=jspe
  - https://jtblin.github.io/angular-chart.js/
  - https://canvasjs.com/javascript-candlestick-chart/ probably not...
+
 # Pivot Table with charts
   - https://www.webdatarocks.com/?r=jspe
 
@@ -24,7 +26,8 @@
 
 # Angular component wrapping
 - https://github.com/angular/angular/issues/7857
-
+- https://stackoverflow.com/questions/46117522/correct-way-to-implement-wrapper-components-in-angular-4
+- https://codeburst.io/display-a-table-using-components-with-angular-4-f13f0971666d
 
 <!---  
 include
