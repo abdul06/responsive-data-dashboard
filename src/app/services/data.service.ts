@@ -20,4 +20,8 @@ export class DataService {
      console.log('Fetching Movies from service...');
      return this.http.get<Movie[]>(this.moviesUrl);
    }
+
+   getColumns(): string[]{
+     return ["title", "type", "rating"];
+   }
 }

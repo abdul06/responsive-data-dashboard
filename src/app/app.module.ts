@@ -9,6 +9,7 @@ import { DataService } from './services/data.service';
 import { TableRowComponent } from './components/table-row/table-row.component';
 import { TableHeadComponent } from './components/table-head/table-head.component';
 import { TableBodyComponent } from './components/table-body/table-body.component';
+import { TableHeaderComponent } from './components/table-header/table-header.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TableBodyComponent } from './components/table-body/table-body.component
     DashboardComponent,
     TableRowComponent,
     TableHeadComponent,
-    TableBodyComponent
+    TableBodyComponent,
+    TableHeaderComponent
   ],
   imports: [
     BrowserModule,

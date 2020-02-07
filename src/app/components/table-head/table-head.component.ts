@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-table-head',
+  selector: '[app-table-head]',
   templateUrl: './table-head.component.html',
-  styleUrls: ['./table-head.component.scss']
+  styleUrls: ['./table-head.component.scss'],
+  host: {'class': 'movie-table__head'}
 })
 export class TableHeadComponent implements OnInit {
 
-  constructor() { }
+  columns: string[];
+  // Used to import services
+  constructor(private _dataService: DataService) { }
 
   ngOnInit() {
+    this.columns = this._dataService.getColumns();
   }
 
 }

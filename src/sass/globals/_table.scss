@@ -1,0 +1,44 @@
+.movie-table {
+
+  &__container {
+
+    border: 1px solid $color-black;
+  } // .movie-table__container
+
+  &__head {
+    width: 100%;
+    min-width: 1200px;
+  } // .movie-table__head
+
+  &__header {
+    th {
+      color: $color-black;
+      border-top: 1px solid $color-dk-grey;
+      background-color: $color-white;
+      border-left: 1px solid $color-dk-grey;
+      padding: 10px;
+      min-width: 300px;
+
+    }
+  }
+
+  &__body {
+
+    tr:first-child td {
+        border-top: 1px solid $color-dk-grey;
+    }
+
+    tr:nth-child(odd) td {
+      background-color: $color-grey;
+    }
+
+    td, 
+    td:first-child {
+      border-left: 1px solid $color-dk-grey;
+      padding: 10px;
+    }
+
+  } // .movie-table__body
+
+
+}// .movie-table

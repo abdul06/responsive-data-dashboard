@@ -1,5 +1,1 @@
-<tr>
-  <td>{{ movie.type }}</td>
-  <td>{{ movie.title }}</td>
-  <td>{{ movie.rating }}</td>
-</tr>
+<td *ngFor="let column of columns">{{ movie[column] }}</td>
