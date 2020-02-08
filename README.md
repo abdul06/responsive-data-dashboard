@@ -9,6 +9,7 @@
   - https://angular.io/tutorial/toh-pt4
 # Setup Data persistance with service
   - https://angular.io/tutorial/toh-pt6
+  - https://www.js-tutorials.com/javascript-tutorial/use-localstorage-sessionstorage-using-webstorage-angular4/
 
 # Sass setup
   - https://scotch.io/tutorials/using-sass-with-the-angular-cli

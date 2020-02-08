@@ -1,6 +1,8 @@
 <div>
     <!-- <app-dashboards></app-dashboards> -->
     <div class="movie-table__container">
-      <table app-table></table>
+      <table app-table [paginatedPage]="paginatedPage"></table>
     </div>
+
+    <button (click)="test()">Paginate items</button>
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+// import { DataService } from '../../services/data.service';
 
 @Component({
   selector: '[app-table]',
@@ -8,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableComponent implements OnInit {
   constructor() { }
+  // Input properties
+  @Input() paginatedPage:number;
 
-  ngOnInit() {
+  ngOnInit( ) {
+
+    console.log('table.paginatedPage',this.paginatedPage);
   }
 
 }

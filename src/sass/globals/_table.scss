@@ -1,8 +1,9 @@
 .movie-table {
+  display: inline-block;
 
   &__container {
-
     border: 1px solid $color-black;
+    display: inline-block;
   } // .movie-table__container
 
   &__head {
@@ -17,8 +18,8 @@
       background-color: $color-white;
       border-left: 1px solid $color-dk-grey;
       padding: 10px;
-      min-width: 300px;
-
+      min-width: 150px;
+      max-width: 150px;
     }
   }
 
@@ -36,6 +37,7 @@
     td:first-child {
       border-left: 1px solid $color-dk-grey;
       padding: 10px;
+      font-size: $font-size-small;
     }
 
   } // .movie-table__body
