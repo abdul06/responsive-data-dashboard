@@ -1,0 +1,19 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TableService {
+
+
+  rows: any[];
+  paginatedRows: any[];
+  numberOfRows: number = 0;
+  numberOfGroupedRows: number = 0;
+  paginationSize: number = 0;
+  
+  constructor() { 
+
+  }
+
+}

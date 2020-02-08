@@ -1,11 +1,7 @@
-<ng-container *ngIf="isDataAvailable"> 
   <tr
-    *ngFor="let movie of paginatedMovies[paginatedPage]" 
+    *ngFor="let row of paginatedRows" 
     app-table-row
-    [movie]="movie"
+    [row]="row"
     [columns]="columns"
     >
   </tr>
-</ng-container> 
-
-<!-- paginatedMovies -->

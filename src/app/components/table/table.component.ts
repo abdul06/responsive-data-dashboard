@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-// import { DataService } from '../../services/data.service';
+import { DataService } from '../../services/data.service';
+import { TableService } from '../../services/table.service';
+import { setupPagination } from '../../../utils/utils';
+// import { Movie } from '../../models/Movie';
 
 @Component({
   selector: '[app-table]',
@@ -8,13 +11,79 @@ import { Component, OnInit, Input } from '@angular/core';
   host: {'class': 'movie-table'}
 })
 export class TableComponent implements OnInit {
-  constructor() { }
-  // Input properties
-  @Input() paginatedPage:number;
+  constructor(public _dataService: DataService, public _tableService: TableService) { }
+  // Passed In properties
+  // @Input() columns:any;
+  // @Input() rows:any;
+  // properties
+  // movies: Movie[];
+  paginatedPage:number = 1;
+  paginatedRows: {
+    rows: any[],
+    start: string,
+    end: string
+  };
+  columns:any;
+  resultNumber: number = 0;
+  startRange: number = this.paginatedPage;
+  endRange: number = 10;
 
-  ngOnInit( ) {
 
-    console.log('table.paginatedPage',this.paginatedPage);
+
+  // Methods
+
+  /**
+   * goes to previous pagination items
+   */
+  public previous() {
+    if(this.paginatedPage > 1){
+      this.paginatedPage--;
+
+      // repeated mutiple time setup as function
+      this.paginatedRows = this._tableService.paginatedRows[`${this.paginatedPage}`].groupedRows;
+      this.startRange = this._tableService.paginatedRows[`${this.paginatedPage}`].start;
+      this.endRange = this._tableService.paginatedRows[`${this.paginatedPage}`].end;
+    }
+  }
+  /**
+   * goes to next pagination items
+   */
+  public next() {
+    if(this._tableService.numberOfRows > 0 && this.paginatedPage < this._tableService.numberOfGroupedRows){
+      this.paginatedPage++;
+
+      // repeated mutiple time setup as function
+      this.paginatedRows = this._tableService.paginatedRows[`${this.paginatedPage}`].groupedRows;
+      this.startRange = this._tableService.paginatedRows[`${this.paginatedPage}`].start;
+      this.endRange = this._tableService.paginatedRows[`${this.paginatedPage}`].end;
+    }
+  }
+
+
+  ngOnInit() {
+    // get movie api data
+    this._dataService.getMovies().subscribe( movies => {
+
+      // set service variables
+      this._tableService.rows = movies
+      // setup pagination array
+      this._tableService.paginatedRows = setupPagination(movies, 100);
+      this._tableService.numberOfRows = movies.length
+
+      // keep track of paginated rows to disable next button
+      this._tableService.numberOfGroupedRows = Object.keys(this._tableService.paginatedRows).length
+      this._dataService.setIsDataAvailable(true);
+    
+      this.resultNumber = this._tableService.numberOfRows
+
+      // repeated mutiple time setup as function
+      this.paginatedRows =  this._tableService.paginatedRows[`${this.paginatedPage}`].groupedRows;
+      this.startRange = this._tableService.paginatedRows[`${this.paginatedPage}`].start;
+      this.endRange = this._tableService.paginatedRows[`${this.paginatedPage}`].end;
+
+    });
+
+    this.columns = this._dataService.getColumns();
   }
 
 }

@@ -8,7 +8,7 @@ import { Movie } from '../../models/Movie';
   host: {'class': 'movie-table__row'}
 })
 export class TableRowComponent implements OnInit {
-  @Input() movie: Movie;
+  @Input() row: Movie;
   @Input() columns: string[];
 
   constructor() { }

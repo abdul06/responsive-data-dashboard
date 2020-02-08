@@ -10,6 +10,8 @@ import { TableRowComponent } from './components/table-row/table-row.component';
 import { TableHeadComponent } from './components/table-head/table-head.component';
 import { TableBodyComponent } from './components/table-body/table-body.component';
 import { TableHeaderComponent } from './components/table-header/table-header.component';
+import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
+import { TableService } from './services/table.service';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,14 @@ import { TableHeaderComponent } from './components/table-header/table-header.com
     TableRowComponent,
     TableHeadComponent,
     TableBodyComponent,
-    TableHeaderComponent
+    TableHeaderComponent,
+    TablePaginationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule
   ],
-  providers: [DataService],
+  providers: [DataService, TableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

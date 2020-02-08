@@ -7,13 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   // Properties
-  paginatedPage:number = 1;
   constructor(){
   }
 
-  public test() {
-    console.log('hello talib');
-    this.paginatedPage++;
-  }
 
 }

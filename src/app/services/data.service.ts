@@ -8,20 +8,29 @@ import { Movie } from '../models/Movie';
 })
 export class DataService {
 
-  moviesUrl: string = 'http://127.0.0.1:5000/';
+  apiUrl: string = 'http://127.0.0.1:5000/';
 
   movies: Movie[];
+  isDataAvailable:boolean = false;
 
   constructor(private http: HttpClient) {
 
    }
-
+  
+   // get movies
    getMovies(): Observable<Movie[]> {
-     console.log('Fetching Movies from service...');
-     return this.http.get<Movie[]>(this.moviesUrl);
+     return this.http.get<Movie[]>(this.apiUrl);
    }
 
    getColumns(): string[]{
      return ["title", "type", "rating"];
+   }
+
+   // getting/setter isDataAvailable
+   getIsDataAvailable(){
+    return this.isDataAvailable;
+   }
+   setIsDataAvailable(bool: boolean){
+    this.isDataAvailable = bool;
    }
 }
