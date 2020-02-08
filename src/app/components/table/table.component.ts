@@ -32,6 +32,14 @@ export class TableComponent implements OnInit {
 
   // Methods
 
+  public setPaginationState() {
+      const pageItem = this._tableService.paginatedRows[`${this.paginatedPage}`];
+      // repeated mutiple time setup as function
+      this.paginatedRows = pageItem.groupedRows;
+      this.startRange = pageItem.start;
+      this.endRange = pageItem.end;
+  }
+
   /**
    * goes to previous pagination items
    */
@@ -39,10 +47,8 @@ export class TableComponent implements OnInit {
     if(this.paginatedPage > 1){
       this.paginatedPage--;
 
-      // repeated mutiple time setup as function
-      this.paginatedRows = this._tableService.paginatedRows[`${this.paginatedPage}`].groupedRows;
-      this.startRange = this._tableService.paginatedRows[`${this.paginatedPage}`].start;
-      this.endRange = this._tableService.paginatedRows[`${this.paginatedPage}`].end;
+      // update 
+      this.setPaginationState();
     }
   }
   /**
@@ -52,10 +58,8 @@ export class TableComponent implements OnInit {
     if(this._tableService.numberOfRows > 0 && this.paginatedPage < this._tableService.numberOfGroupedRows){
       this.paginatedPage++;
 
-      // repeated mutiple time setup as function
-      this.paginatedRows = this._tableService.paginatedRows[`${this.paginatedPage}`].groupedRows;
-      this.startRange = this._tableService.paginatedRows[`${this.paginatedPage}`].start;
-      this.endRange = this._tableService.paginatedRows[`${this.paginatedPage}`].end;
+      // update 
+      this.setPaginationState();
     }
   }
 
@@ -67,7 +71,7 @@ export class TableComponent implements OnInit {
       // set service variables
       this._tableService.rows = movies
       // setup pagination array
-      this._tableService.paginatedRows = setupPagination(movies, 100);
+      this._tableService.paginatedRows = setupPagination(movies, 10);
       this._tableService.numberOfRows = movies.length
 
       // keep track of paginated rows to disable next button
@@ -76,10 +80,8 @@ export class TableComponent implements OnInit {
     
       this.resultNumber = this._tableService.numberOfRows
 
-      // repeated mutiple time setup as function
-      this.paginatedRows =  this._tableService.paginatedRows[`${this.paginatedPage}`].groupedRows;
-      this.startRange = this._tableService.paginatedRows[`${this.paginatedPage}`].start;
-      this.endRange = this._tableService.paginatedRows[`${this.paginatedPage}`].end;
+      // set starting state
+      this.setPaginationState();
 
     });
 

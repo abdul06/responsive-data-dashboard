@@ -1,5 +1,6 @@
   // add to utility folder
-export function setupPagination(list:any[], itemNumber:number):any{
+export function setupPagination(list:any[], itemNumber:number = 10):any{
+    //default pagination is 10
     // nice-to-have: setup paginationObject as own class
     let paginationObject = {};
     let itemList: any[] = [];
