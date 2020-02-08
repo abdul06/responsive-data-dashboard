@@ -1,4 +1,28 @@
-  // add to utility folder
+
+
+
+
+
+function compareKeyVaues (key: string, sortOrder: number = 1 ):any {
+
+  return function(a?:any, b?:any):any{
+    var result = (a[`${key}`] < b[`${key}`]) ? -1 : (a[`${key}`] > b[`${key}`]) ? 1 : 0;
+    return result * sortOrder;
+  }
+}
+
+export function sortByObjectValue(list: any[], key: string, sort: string = 'ascending'){
+
+  const sortOrder = sort === 'ascending' ? 1 : -1;
+
+  return list.sort(compareKeyVaues(key, sortOrder));
+
+}
+
+
+
+
+// nice-to-have: setup paginationObject as own class
 export function setupPagination(list:any[], itemNumber:number = 10):any{
     //default pagination is 10
     // nice-to-have: setup paginationObject as own class

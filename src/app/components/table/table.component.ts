@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { TableService } from '../../services/table.service';
-import { setupPagination } from '../../../utils/utils';
+import { setupPagination, sortByObjectValue } from '../../../utils/utils';
 // import { Movie } from '../../models/Movie';
 
 @Component({
@@ -82,10 +82,13 @@ export class TableComponent implements OnInit {
 
       // set starting state
       this.setPaginationState();
+      // sorting is good to go
+      console.log(sortByObjectValue(movies, 'cast'));
 
     });
 
     this.columns = this._dataService.getColumns();
+
   }
 
 }
