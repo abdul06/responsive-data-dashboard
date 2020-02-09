@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class TableService {
 
-
   rows: any[];
   paginatedRows: any[];
   numberOfRows: number = 0;

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TableService } from '../../services/table.service';
 
 @Component({
   selector: '[app-table-header]',
@@ -9,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TableHeaderComponent implements OnInit {
 
   @Input() columns: string[];
+  @Input() sortRows: (key: string) => {};
 
   constructor() { }
 

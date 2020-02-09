@@ -17,19 +17,20 @@ export class DataService {
 
    }
   
-   // get movies
+   // get movies data
    getMovies(): Observable<Movie[]> {
      return this.http.get<Movie[]>(this.apiUrl);
    }
-
+   // setup columns from movie
    getColumns(): string[]{
      return ["title", "type", "rating"];
    }
 
-   // getting/setter isDataAvailable
+   // getter isDataAvailable
    getIsDataAvailable(){
     return this.isDataAvailable;
    }
+   // setter isDataAvailable
    setIsDataAvailable(bool: boolean){
     this.isDataAvailable = bool;
    }

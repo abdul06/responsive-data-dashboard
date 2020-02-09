@@ -12,6 +12,7 @@ import { TableBodyComponent } from './components/table-body/table-body.component
 import { TableHeaderComponent } from './components/table-header/table-header.component';
 import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
 import { TableService } from './services/table.service';
+import { TableOptionsComponent } from './components/table-options/table-options.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TableService } from './services/table.service';
     TableHeadComponent,
     TableBodyComponent,
     TableHeaderComponent,
-    TablePaginationComponent
+    TablePaginationComponent,
+    TableOptionsComponent
   ],
   imports: [
     BrowserModule,

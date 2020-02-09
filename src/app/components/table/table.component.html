@@ -1,7 +1,12 @@
 
-<!-- <ng-container> -->
-  <table >
-    <thead app-table-head></thead>
+  <div class="table__options"
+    [searchTable]=searchTable
+    app-table-options>
+  </div>
+  <table class="table__data">
+    <thead app-table-head
+      [sortRows]="sortRows">
+    </thead>
     <!-- setup "this._dataService.isDataAvailable" to be decoupled from application -->
     <ng-container *ngIf="this._dataService.isDataAvailable"> 
       <tbody app-table-body 
@@ -12,17 +17,14 @@
     </ng-container> 
   </table>
 
-  <div>
+  <div class="table__pagination">
     <div class="table__results">
       <p>Showing {{ startRange }} - {{ endRange }} of {{ resultNumber }} results</p>
     </div>
 
-    <div class="table__pagination-container">
+    <div class="table__pagination-controls">
+      <!-- nice-to-have: setup number pagination if time allowed -->
       <button (click)="previous()">previous</button> 
-      <!-- nice-to-have: setup number pagination if time allowe -->
-      <!-- <button (click)="checkBinding()">1</button> 
-      <button>2</button> -->
       <button (click)="next()">next</button>
     </div>
   </div>
-<!-- </ng-container> -->

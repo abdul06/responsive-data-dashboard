@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { DataService } from '../../services/data.service';
   host: {'class': 'movie-table__head'}
 })
 export class TableHeadComponent implements OnInit {
+  @Input() sortRows: (key: string) => {};
 
   columns: string[];
   // Used to import services
