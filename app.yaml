@@ -1,0 +1,10 @@
+service: default
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+- url: /
+  static_files: dist/responsive-data-dashboard/index.html
+  upload: dist/responsive-data-dashboard/index.html
+- url: /
+  static_dir: dist/responsive-data-dashboard

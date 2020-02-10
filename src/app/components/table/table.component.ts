@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { TableService } from '../../services/table.service';
 import { setupPagination, sortByObjectValue } from '../../../utils/utils';
+import { mockData } from '../../../utils/mock';
 
 @Component({
   selector: '[app-table]',
@@ -28,6 +29,7 @@ export class TableComponent implements OnInit {
   isSorted: boolean = false;
   currentSortKey: string = null;
   sortType: string = null;
+  rowsPerPageList: number[] = [10, 25, 50, 100];
 
   // ----------------------------
   // Methods
@@ -35,11 +37,18 @@ export class TableComponent implements OnInit {
    * set pagniation state, used with next(), previous(), and inital setup
    */
   private setPaginationState():void {
-      const pageItem = this._tableService.paginatedRows[`${this.paginatedPage}`];
-      // repeated mutiple time setup as function
-      this.paginatedRows = pageItem.groupedRows;
-      this.startRange = pageItem.start;
-      this.endRange = pageItem.end;
+
+    if(this._tableService.paginatedRows === null){
+      this.paginatedRows = { rows: [], start: '0', end: '0'};
+      this.startRange = parseInt(this.paginatedRows.start);
+      this.endRange = parseInt(this.paginatedRows.end);
+      return;
+    }
+    const pageItem = this._tableService.paginatedRows[`${this.paginatedPage}`];
+    // repeated mutiple time setup as function
+    this.paginatedRows = pageItem.groupedRows;
+    this.startRange = pageItem.start;
+    this.endRange = pageItem.end;
   }
 
   /**
@@ -54,7 +63,31 @@ export class TableComponent implements OnInit {
    */
 
   searchTable = (event:any) => {
-    console.log('testing keyup event.target.value', event.target.value);
+    let updatedRows = [];
+
+    for (let index = 0; index < mockData.length; index++) {
+      const row = mockData[index];
+
+      for (const key in row) {
+        // need to check null values first
+        if(row[key] && row[key].toString().toLowerCase().indexOf(event.target.value.toLowerCase()) != -1){
+          updatedRows.push(row);
+          break
+        }; 
+      }
+
+    } 
+    // show body only if data is available on search
+    const isRows = updatedRows.length !== 0 ? true : false;
+    this._dataService.setIsDataAvailable(isRows);
+    // updating table setting for rows and len
+    this._tableService.numberOfRows = updatedRows.length;
+    this.resultNumber = this._tableService.numberOfRows;
+    this._tableService.paginatedRows = setupPagination(updatedRows);
+    this.setPaginationState();
+
+    // reset pagination on search
+    this.paginatedPage = 1;
   }
 
   /**
@@ -106,6 +139,7 @@ export class TableComponent implements OnInit {
    * goes to next pagination items in table
    */
   public next():void {
+    // need to reset if using table and search rows
     if(this._tableService.numberOfRows > 0 && this.paginatedPage < this._tableService.numberOfGroupedRows){
       this.paginatedPage++;
 
@@ -122,11 +156,9 @@ export class TableComponent implements OnInit {
 
       // set service variables
       this._tableService.rows = movies
-      console.log('movies on init ',movies);
       // setup pagination array
       this._tableService.paginatedRows = setupPagination(movies, 10);
       this._tableService.numberOfRows = movies.length
-      console.log()
       // keep track of paginated rows to disable next button
       this._tableService.numberOfGroupedRows = Object.keys(this._tableService.paginatedRows).length
       this._dataService.setIsDataAvailable(true);
@@ -135,7 +167,29 @@ export class TableComponent implements OnInit {
 
       // set starting state
       this.setPaginationState();
-    });
+
+    },
+
+    error => {
+      // very bad... :-( need to setup a cached version if no api... this is just a quick fix if api is down
+        console.log(error)
+        // set service variables
+        this._tableService.rows = mockData
+        // setup pagination array
+        this._tableService.paginatedRows = setupPagination(mockData, 10);
+        this._tableService.numberOfRows = mockData.length
+        // keep track of paginated rows to disable next button
+        this._tableService.numberOfGroupedRows = Object.keys(this._tableService.paginatedRows).length
+        this._dataService.setIsDataAvailable(true);
+      
+        this.resultNumber = this._tableService.numberOfRows
+  
+        // set starting state
+        this.setPaginationState();
+    }
+    
+    
+    );
 
     // get columns for data setup in data.service.ts [key:string, key:string, key:string]
     this.columns = this._dataService.getColumns();

@@ -2,18 +2,14 @@
   <label>Show 
     <!-- setup as array use ng for to set -->
     <select name="tableSize" class="table__size-selection">
-      <option value="10">10</option>
-      <option value="25">25</option>
-      <option value="50">50</option>
-      <option value="100">100</option>
+      <option *ngFor="let value of rowsPerPageList" value="{{value}}">{{value}}</option>
     </select> results
   </label>
 </div>
-
 <div class="table__search-container">
   <div class="table__search">
     <label>
-      <input type="search" 
+      <input type="text" 
         (keyup)="searchTable($event)"
         class="input table__search-input" 
         placeholder="Search Table">

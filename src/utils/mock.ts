@@ -1,4 +1,4 @@
-[
+export const mockData:any[] = [
   {
     "cast": "Alan Marriott, Andrew Toth, Brian Dobson, Cole Howard, Jennifer Cameron, Jonathan Holmes, Lee Tockar, Lisa Durupt, Maya Kay, Michael Dobson", 
     "country": "United States, India, South Korea, China", 
@@ -87275,4 +87275,4 @@
     "title": "Friends", 
     "type": "TV Show"
   }
-]
+];

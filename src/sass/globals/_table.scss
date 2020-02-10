@@ -8,9 +8,24 @@
   } // .table__options 
   // .table__pagination
 
+  &__container {
+    overflow-x:auto;
+  }
+
   &__data {
     margin: 25px 0;
+    width: 100%;
+    // table-layout: fixed ;
+
+    @include media-query('tablet-large'){
+      height: 550px;
+    }
   } // .table__data
+
+  td {
+    min-width: 150px;
+    max-width: 150px;
+  }
 } // .table
 
 .movie-table {
@@ -19,8 +34,7 @@
   &__container {
     border: 1px solid $color-black;
     display: block;
-    max-width: 800px;
-    margin: 0 auto;
+    margin: 0 15px;
   } // .movie-table__container
 
   &__head {

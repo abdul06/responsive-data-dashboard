@@ -1,2 +1,6 @@
 <app-dashboard *ngFor="let dashboard of dashboards" [dashboard]="dashboard">
 </app-dashboard>
+
+<div *ngIf="myChart">
+  <canvas id="canvas" width="400" height="400">{{ myChart }}</canvas>
+</div>

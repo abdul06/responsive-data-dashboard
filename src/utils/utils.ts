@@ -41,36 +41,58 @@ export function sortByObjectValue(list: any[], key: string, sort: string = 'asce
  */
 // nice-to-have: setup paginationObject as own class
 export function setupPagination(list:any[], itemNumber:number = 10):any{
-    let paginationObject = {};
-    let itemList: any[] = [];
-    let count: number = 0;
-    let objectNumber: number = 1;
-    
-    for (let index = 0; index < list.length; index++) {
-      
-      // reset list to setup pagination list number
-      if(count === itemNumber){
-        // init groupRows set to a number
-        paginationObject[`${objectNumber}`] = {
-          groupedRows: null,
-          start: null,
-          end: null,
-        };
-        // setup list on pagination object
-        paginationObject[objectNumber].groupedRows = itemList;
-        // setup beginning range number
-        paginationObject[objectNumber].start = objectNumber > 1 ? ( (objectNumber -1) * itemList.length) + 1 : objectNumber;
-        // setup end range number 
-        paginationObject[objectNumber].end = objectNumber > 1 ? ( objectNumber * itemList.length) : itemList.length ;
 
-        // reset array and count
-        count = 0;
-        itemList = [];
-        objectNumber++
-      }
-      itemList.push(list[index]);
-      count++;
-    }
+  // base if not result
+  if(list.length === 0){
+    return null;
+  }
+
+  let paginationObject = {};
+  let itemList: any[] = [];
+  let count: number = 0;
+  let objectNumber: number = 1;
+
+  // base if less than item number
+  if(itemNumber > list.length) {
+     paginationObject = {
+       "1": {
+        groupedRows: list,
+        start: 1,
+        end: list.length
+       }
+    };
 
     return paginationObject;
+  }
+
+
+  for (let index = 0; index < list.length; index++) {
+
+    // reset list to setup pagination list number
+    if(count === itemNumber){
+      // init groupRows set to a number
+      paginationObject[`${objectNumber}`] = {
+        groupedRows: null,
+        start: null,
+        end: null,
+      };
+      // setup list on pagination object
+      paginationObject[objectNumber].groupedRows = itemList;
+      // setup beginning range number
+      paginationObject[objectNumber].start = objectNumber > 1 ? ( (objectNumber -1) * itemList.length) + 1 : objectNumber;
+      // setup end range number 
+      paginationObject[objectNumber].end = objectNumber > 1 ? ( objectNumber * itemList.length) : itemList.length ;
+
+      // reset array and count
+      count = 0;
+      itemList = [];
+      objectNumber++
+    }
+    itemList.push(list[index]);
+    count++;
+
+
+  }
+
+  return paginationObject;
   }

@@ -23,7 +23,7 @@ export class DataService {
    }
    // setup columns from movie
    getColumns(): string[]{
-     return ["title", "type", "rating"];
+     return ["title", "type", "director", "cast", "country", "date_added", "release_year", "rating", "duration", "listed_in", "description" ];
    }
 
    // getter isDataAvailable

@@ -1,21 +1,25 @@
 
   <div class="table__options"
     [searchTable]=searchTable
+    [rowsPerPageList]=rowsPerPageList
     app-table-options>
   </div>
-  <table class="table__data">
-    <thead app-table-head
-      [sortRows]="sortRows">
-    </thead>
-    <!-- setup "this._dataService.isDataAvailable" to be decoupled from application -->
-    <ng-container *ngIf="this._dataService.isDataAvailable"> 
-      <tbody app-table-body 
-        [paginatedRows]="paginatedRows"
-        [columns]="columns"
-        [paginatedPage]="paginatedPage">
-      </tbody>
-    </ng-container> 
-  </table>
+
+  <div class="table__container">
+    <table class="table__data">
+      <thead app-table-head
+        [sortRows]="sortRows">
+      </thead>
+      <!-- setup "this._dataService.isDataAvailable" to be decoupled from application -->
+      <ng-container *ngIf="this._dataService.isDataAvailable"> 
+        <tbody app-table-body 
+          [paginatedRows]="paginatedRows"
+          [columns]="columns"
+          [paginatedPage]="paginatedPage">
+        </tbody>
+      </ng-container> 
+    </table>
+  </div>
 
   <div class="table__pagination">
     <div class="table__results">
