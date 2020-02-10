@@ -1,10 +1,13 @@
 <div class="table__size">
-  <label>Show 
-    <!-- setup as array use ng for to set -->
-    <select name="tableSize" class="table__size-selection">
-      <option *ngFor="let value of rowsPerPageList" value="{{value}}">{{value}}</option>
-    </select> results
-  </label>
+  <ng-container *ngIf="hideResultNotFinished">
+    <label>Show 
+      <!-- setup as array use ng for to set -->
+      <select name="tableSize" class="table__size-selection" (change)="updateResults($event)" >
+        <option *ngFor="let value of rowsPerPageList" value="{{value}}">{{value}}</option>
+      </select> results
+    </label>
+  </ng-container>
+
 </div>
 <div class="table__search-container">
   <div class="table__search">

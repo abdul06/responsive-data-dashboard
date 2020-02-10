@@ -52,6 +52,18 @@ export class TableComponent implements OnInit {
   }
 
   /**
+   * Updated Results will update showing number of list onchange
+   * 
+   * @param {string} key - sort key from table header
+   * 
+   * Future state: change to event emmitter in future. 
+   * Will keep function scoped to component properly and will not have to setup es6 scoping
+   */
+  updateResults = (event:any) => { 
+
+  }
+
+  /**
    * Needed to scope to table component with passing to table-header component via @Input so used es6 synthax
    * function expression 
    * setup _tableService.paginatedRows and ran setPaginationState to re-build table dataset 

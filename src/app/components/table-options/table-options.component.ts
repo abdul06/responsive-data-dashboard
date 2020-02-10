@@ -6,8 +6,12 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./table-options.component.scss']
 })
 export class TableOptionsComponent implements OnInit {
+  // Passed In Props
   @Input() searchTable: (event:any) => {};
+  @Input() updateResults: (event:any) => {};
   @Input() rowsPerPageList: number[];
+  // Properties
+  hideResultNotFinished: boolean = false;
 
   constructor() { }
 
