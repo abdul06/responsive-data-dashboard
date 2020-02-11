@@ -15,6 +15,7 @@ export class DashboardsComponent implements OnInit {
   sortedData: any[];
   dashboards:Dashboard[];
   chart1: Chart;
+  chart2: Chart;
   chartData: any[];
   getDataPoints = getDataPoints;
   constructor( public _dataService: DataService) { }
@@ -47,7 +48,7 @@ export class DashboardsComponent implements OnInit {
         let chartLabels = this.sortedData.map( item => item.label);
         let moviesData = this.sortedData.map( item => item.Movie);
         let tvData = this.sortedData.map( item => { return item['TV Show'] ? item['TV Show'] : 0 });
-        this.chartInit(chartLabels, moviesData, tvData);
+        this.chartInit(chartLabels, moviesData, tvData,);
 
       }
     );
@@ -55,6 +56,15 @@ export class DashboardsComponent implements OnInit {
 
 
   chartInit( chartLabel, dataSetOne, dataSetTwo){
+    // quick and dirty Put in utili later
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    //Movies
+    let combineDataSetOne = dataSetOne.reduce(reducer);
+    //Shows
+    let combineDataSetTwo = dataSetTwo.reduce(reducer);
+    // quick and dirty Put in utili later
+    
+    
     this.chart1 = new Chart('canvas', {
       type: 'line',
       data: {
@@ -63,22 +73,24 @@ export class DashboardsComponent implements OnInit {
           {
             label: 'Movies',
             data: dataSetOne,
-            borderColor:'#2ECC40'
+            borderColor:'#f0533f'
           },
           {
             label: 'TV Shows',
             data: dataSetTwo,
-            borderColor: '#FF0000'
+            borderColor: '#0076be'
           }
         ]
       },
       options: {
+        maintainAspectRatio: false,
         title: {
-          display: false,
-          text: 'Color test'
+          display: true,
+          text: 'TV Shows and Movies added from 2008 - 2020',
+          fontSize: 20
         },
         legend: {
-          position: 'left',
+          position: 'bottom',
           display: true,
           labels: {
             fontSize: 12
@@ -94,6 +106,37 @@ export class DashboardsComponent implements OnInit {
         }
       }
     });
+
+
+    this.chart2 = new Chart('canvas2', {
+      type: 'doughnut',
+      data: {
+        labels: ['Movies', 'TV Shows'],
+        
+        datasets: [
+          {
+            data: [combineDataSetOne, combineDataSetTwo],
+            backgroundColor: ['#f0533f', '#0076be'],
+          },
+        ]
+      },
+      options: {
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: 'Ratio of Movies to TV Shows',
+          fontSize: 20
+        },
+        legend: {
+          position: 'bottom',
+          display: true,
+          labels: {
+            fontSize: 12
+          }
+        }
+      }
+    });
+
   }
 
 };

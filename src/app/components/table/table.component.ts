@@ -8,7 +8,7 @@ import { mockData } from '../../../utils/mock';
   selector: '[app-table]',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  host: {'class': 'movie-table'}
+  host: {'class': 'table movie-table'}
 })
 export class TableComponent implements OnInit {
   constructor(public _dataService: DataService, public _tableService: TableService) { }

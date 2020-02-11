@@ -1,0 +1,56 @@
+.dashboard {
+
+  padding: 50px 50px 0;
+
+  @include media-query('tablet-small'){
+    padding: 50px 25px 0;
+  }
+
+
+  &__header-container {
+    font-size: $font-size-h2;
+    font-weight: $font-weight-light;
+  }
+
+  &__charts-container {
+    display: flex;
+    justify-content: space-between;
+    @include media-query('media-1150'){
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__chart-container {
+    width: 48%;
+    max-width: 700px;
+    margin: 25px 0;
+    padding: 30px;
+    height: 325px;
+    border: 1px solid $color-grey;
+    border-radius: 6px;
+    box-shadow: 0 1px 1px $color-black-5;
+    background-color: $color-white;
+    @include media-query('media-1150'){
+      width: 100%;
+    }
+
+    @include media-query('tablet-small'){
+      height: 400px;
+    }
+  }
+
+
+}
+
+//atd brand colors
+$color-red: #f0533f;
+$color-white: #ffffff;
+$color-grey: #e1ebf4;
+$color-black-5: rgba(0, 29, 52, .05);
+$color-black: #001d34;
+$color-blue: #0076be;
+$color-blue-10: rgba(0, 118, 190, 0.10);
+
+$color-dk-grey: #787878;
+

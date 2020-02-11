@@ -1,34 +1,47 @@
 
-  <div class="table__options"
-    [searchTable]=searchTable
-    [rowsPerPageList]=rowsPerPageList
-    app-table-options>
+<div class="table__section">
+
+  <div class="table__section-heading-container">
+    <h2 class="table__section-heading">Data Table</h2>
   </div>
 
-  <div class="table__container">
-    <table class="table__data">
-      <thead app-table-head
-        [sortRows]="sortRows">
-      </thead>
-      <!-- setup "this._dataService.isDataAvailable" to be decoupled from application -->
-      <ng-container *ngIf="this._dataService.isDataAvailable"> 
-        <tbody app-table-body 
-          [paginatedRows]="paginatedRows"
-          [columns]="columns"
-          [paginatedPage]="paginatedPage">
-        </tbody>
-      </ng-container> 
-    </table>
-  </div>
-
-  <div class="table__pagination">
-    <div class="table__results">
-      <p>Showing {{ startRange }} - {{ endRange }} of {{ resultNumber }} results</p>
+  <div class="table__wrapper">
+    <div class="table__options"
+      [searchTable]=searchTable
+      [rowsPerPageList]=rowsPerPageList
+      app-table-options>
     </div>
 
-    <div class="table__pagination-controls">
-      <!-- nice-to-have: setup number pagination if time allowed -->
-      <button (click)="previous()">previous</button> 
-      <button (click)="next()">next</button>
+    <div class="table__container">
+      <table class="table__data">
+        <thead app-table-head
+          [sortRows]="sortRows">
+        </thead>
+        <!-- setup "this._dataService.isDataAvailable" to be decoupled from application -->
+        <ng-container *ngIf="this._dataService.isDataAvailable"> 
+          <tbody app-table-body 
+            [paginatedRows]="paginatedRows"
+            [columns]="columns"
+            [paginatedPage]="paginatedPage">
+          </tbody>
+        </ng-container> 
+        <tfoot app-table-head
+          [sortRows]="sortRows">
+        </tfoot>
+      </table>
     </div>
+
+    <div class="table__pagination">
+      <div class="table__results">
+        <p>Showing {{ startRange }} - {{ endRange }} of {{ resultNumber }} results</p>
+      </div>
+
+      <div class="table__pagination-controls">
+        <!-- nice-to-have: setup number pagination if time allowed -->
+        <button class="btn btn__pagination btn__previous" (click)="previous()">previous</button> 
+        <button class="btn btn__pagination btn__next" (click)="next()">next</button>
+      </div>
+    </div>
+
   </div>
+</div>

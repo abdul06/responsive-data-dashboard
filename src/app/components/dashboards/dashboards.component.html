@@ -1,4 +1,22 @@
 <app-dashboard *ngFor="let dashboard of dashboards" [dashboard]="dashboard">
 </app-dashboard>
 
-<div ><canvas id="canvas"></canvas></div>
+
+<div class="dashboard">
+
+  <div class="dashboard__header-container">
+    <h2 class="dashboard__header">Dashboard</h2>
+  </div>
+
+  <div class="dashboard__charts-container">
+
+    <div class="dashboard__chart-container">
+      <canvas class="dashboard__chart" id="canvas"></canvas>
+    </div>
+
+    <div class="dashboard__chart-container">
+      <canvas class="dashboard__chart" id="canvas2"></canvas>
+    </div>
+  </div>
+
+</div>
