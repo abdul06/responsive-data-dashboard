@@ -11,11 +11,15 @@ import { mockData } from '../../../utils/mock';
   host: {'class': 'table movie-table'}
 })
 export class TableComponent implements OnInit {
-  constructor(public _dataService: DataService, public _tableService: TableService) { }
+  constructor(public _dataService: DataService, public _tableService: TableService) { 
+    this.isLoading = true;
+  }
   // Passed In (Input) properties
 
   // ----------------------------
   // Properties
+  isApiConnected: boolean;
+  isLoading: boolean;
   paginatedPage:number = 1;
   paginatedRows: {
     rows: any[],
@@ -75,10 +79,12 @@ export class TableComponent implements OnInit {
    */
 
   searchTable = (event:any) => {
+
+    const movies = this._tableService.rows;
     let updatedRows = [];
 
-    for (let index = 0; index < mockData.length; index++) {
-      const row = mockData[index];
+    for (let index = 0; index < movies.length; index++) {
+      const row = movies[index];
 
       for (const key in row) {
         // need to check null values first
@@ -133,7 +139,6 @@ export class TableComponent implements OnInit {
     this._tableService.paginatedRows = setupPagination(sorted, 10);
     // setup pagination state after content is sorted
     this.setPaginationState();
-
   }
 
   /**
@@ -163,6 +168,7 @@ export class TableComponent implements OnInit {
   // ----------------------------
   // Init on load of component
   ngOnInit() {
+
     // get movie api data
     this._dataService.getMovies().subscribe( movies => {
 
@@ -180,24 +186,15 @@ export class TableComponent implements OnInit {
       // set starting state
       this.setPaginationState();
 
+      this.isApiConnected = true;
+      this.isLoading = false;
+
     },
 
     error => {
-      // very bad... :-( need to setup a cached version if no api... this is just a quick fix if api is down
         console.log(error)
-        // set service variables
-        this._tableService.rows = mockData
-        // setup pagination array
-        this._tableService.paginatedRows = setupPagination(mockData, 10);
-        this._tableService.numberOfRows = mockData.length
-        // keep track of paginated rows to disable next button
-        this._tableService.numberOfGroupedRows = Object.keys(this._tableService.paginatedRows).length
-        this._dataService.setIsDataAvailable(true);
-      
-        this.resultNumber = this._tableService.numberOfRows
-  
-        // set starting state
-        this.setPaginationState();
+        this.isApiConnected = false;
+        this.isLoading = false;
     }
     
     

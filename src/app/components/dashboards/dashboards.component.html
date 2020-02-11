@@ -1,22 +1,22 @@
-<app-dashboard *ngFor="let dashboard of dashboards" [dashboard]="dashboard">
-</app-dashboard>
+<!-- add dashboards as functional component - this is just to get up and running quickly -->
+<!-- <app-dashboard *ngFor="let dashboard of dashboards" [dashboard]="dashboard"> -->
+<!-- </app-dashboard> -->
 
+    <div class="dashboard">
 
-<div class="dashboard">
+      <div class="dashboard__header-container">
+        <h2 class="dashboard__header">Dashboard</h2>
+      </div>
 
-  <div class="dashboard__header-container">
-    <h2 class="dashboard__header">Dashboard</h2>
-  </div>
+      <div class="dashboard__charts-container">
 
-  <div class="dashboard__charts-container">
+        <div class="dashboard__chart-container">
+          <canvas class="dashboard__chart" id="canvas"></canvas>
+        </div>
 
-    <div class="dashboard__chart-container">
-      <canvas class="dashboard__chart" id="canvas"></canvas>
+        <div class="dashboard__chart-container">
+          <canvas class="dashboard__chart" id="canvas2"></canvas>
+        </div>
+      </div>
+
     </div>
-
-    <div class="dashboard__chart-container">
-      <canvas class="dashboard__chart" id="canvas2"></canvas>
-    </div>
-  </div>
-
-</div>

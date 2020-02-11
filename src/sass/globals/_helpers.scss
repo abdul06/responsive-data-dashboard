@@ -68,3 +68,34 @@
 .h-align-content-flex-end {
   align-content: flex-end;
 }
+
+
+// Loading State
+
+.loader {
+  margin-top: 25px;
+  border: 16px solid $color-blue; /* Light grey */
+  border-top: 16px solid $color-red; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+  &__heading-container {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.loading-state {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

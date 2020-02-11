@@ -8,7 +8,7 @@ import { Movie } from '../models/Movie';
 })
 export class DataService {
 
-  apiUrl: string = 'http://127.0.0.1:5000/';
+  apiUrl: string = 'https://bamboo-lane-267201.appspot.com/';
 
   movies: Movie[];
   isDataAvailable:boolean = false;

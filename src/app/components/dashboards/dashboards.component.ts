@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { mockData } from '../../../utils/mock';
 import { Dashboard } from '../../models/Dashboards';
 import { sortByObjectValue } from '../../../utils/utils';
 import { getDataPoints } from '../../../utils/utilsjs';
@@ -18,11 +17,15 @@ export class DashboardsComponent implements OnInit {
   chart2: Chart;
   chartData: any[];
   getDataPoints = getDataPoints;
-  constructor( public _dataService: DataService) { }
-
+  chartLabels: any[];
+  moviesData: any[];
+  tvData: any[];
+  // add loading dashboard later
+  // isApiConnected: boolean;
+  // isLoading: boolean;
 
   
-  cleanDataForChart() {
+  constructor( public _dataService: DataService, private _elementRef: ElementRef) { 
 
   }
 
@@ -31,25 +34,21 @@ export class DashboardsComponent implements OnInit {
     // get movie api data
     this._dataService.getMovies().subscribe( movies => {
 
-        
         this.chartData = this.getDataPoints(movies, 'date_added', 'type');
         
         this.sortedData = sortByObjectValue(this.chartData, 'label', 'ascending');
-        let chartLabels = this.sortedData.map( item => item.label);
-        let moviesData = this.sortedData.map( item => item.Movie);
-        let tvData = this.sortedData.map( item => { return item['TV Show'] ? item['TV Show'] : 0 });
-        this.chartInit(chartLabels, moviesData, tvData);
+        this.chartLabels = this.sortedData.map( item => item.label);
+        this.moviesData = this.sortedData.map( item => item.Movie);
+        this.tvData = this.sortedData.map( item => { return item['TV Show'] ? item['TV Show'] : 0 });
+        
       },
       error => {
-        // very bad... :-( need to setup a cached version if no api... this is just a quick fix if api is down
+        console.log(error)
 
-        this.chartData = this.getDataPoints(mockData, 'date_added', 'type');
-        this.sortedData = sortByObjectValue(this.chartData, 'date_added', 'ascending');
-        let chartLabels = this.sortedData.map( item => item.label);
-        let moviesData = this.sortedData.map( item => item.Movie);
-        let tvData = this.sortedData.map( item => { return item['TV Show'] ? item['TV Show'] : 0 });
-        this.chartInit(chartLabels, moviesData, tvData,);
-
+      },
+      () => {
+        // on complete
+        this.chartInit(this.chartLabels, this.moviesData, this.tvData);
       }
     );
   }
@@ -63,8 +62,7 @@ export class DashboardsComponent implements OnInit {
     //Shows
     let combineDataSetTwo = dataSetTwo.reduce(reducer);
     // quick and dirty Put in utili later
-    
-    
+
     this.chart1 = new Chart('canvas', {
       type: 'line',
       data: {
