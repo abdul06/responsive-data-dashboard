@@ -1,4 +1,8 @@
 <!--- Repo  https://github.com/abdul06/responsive-data-dashboard -->
+
+# Design system
+  - https://clarity.design/
+
 # Sass setup
   - https://scotch.io/tutorials/using-sass-with-the-angular-cli
 
