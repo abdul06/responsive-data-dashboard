@@ -6,11 +6,7 @@ import { DashboardsComponent } from './components/dashboards/dashboards.componen
 import { TableComponent } from './components/table/table.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DataService } from './services/data.service';
-import { TableHeadComponent } from './components/table-head/table-head.component';
-import { TableHeaderComponent } from './components/table-header/table-header.component';
-import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
 import { TableService } from './services/table.service';
-import { TableOptionsComponent } from './components/table-options/table-options.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,10 +16,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardsComponent,
     TableComponent,
     DashboardComponent,
-    TableHeadComponent,
-    TableHeaderComponent,
-    TablePaginationComponent,
-    TableOptionsComponent
   ],
   imports: [
     BrowserModule,

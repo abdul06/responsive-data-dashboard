@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { TableService } from '../../services/table.service';
+import { ClrDatagridStateInterface } from '@clr/angular';
 import { setupPagination, sortByObjectValue } from '../../../utils/utils';
-import { mockData } from '../../../utils/mock';
 
 @Component({
   selector: 'app-table',
@@ -26,6 +26,9 @@ export class TableComponent implements OnInit {
     end: string
   };
   columns:any;
+  rows: any;
+  total: number;
+  loading: boolean = true;
   resultNumber: number = 0;
   startRange: number = this.paginatedPage;
   endRange: number = 10;
@@ -54,60 +57,7 @@ export class TableComponent implements OnInit {
     this.endRange = pageItem.end;
   }
 
-  /**
-   * Updated Results will update showing number of list onchange
-   * 
-   * @param {string} key - sort key from table header
-   * 
-   * Future state: change to event emmitter in future. 
-   * Will keep function scoped to component properly and will not have to setup es6 scoping
-   */
-  updateResults = (event:any) => { 
-
-  }
-
-  /**
-   * Needed to scope to table component with passing to table-header component via @Input so used es6 synthax
-   * function expression 
-   * setup _tableService.paginatedRows and ran setPaginationState to re-build table dataset 
-   * 
-   * @param {string} key - sort key from table header
-   * 
-   * Future state: change to event emmitter in future. 
-   * Will keep function scoped to component properly and will not have to setup es6 scoping
-   */
-
-  searchTable = (event:any) => {
-
-    const movies = this._tableService.rows;
-    let updatedRows = [];
-
-    for (let index = 0; index < movies.length; index++) {
-      const row = movies[index];
-
-      for (const key in row) {
-        // need to check null values first
-        if(row[key] && row[key].toString().toLowerCase().indexOf(event.target.value.toLowerCase()) != -1){
-          updatedRows.push(row);
-          break
-        }; 
-      }
-
-    } 
-    // show body only if data is available on search
-    const isRows = updatedRows.length !== 0 ? true : false;
-    this._dataService.setIsDataAvailable(isRows);
-    // updating table setting for rows and len
-    this._tableService.numberOfRows = updatedRows.length;
-    this.resultNumber = this._tableService.numberOfRows;
-    this._tableService.paginatedRows = setupPagination(updatedRows);
-    this.setPaginationState();
-
-    // reset pagination on search
-    this.paginatedPage = 1;
-  }
-
-  /**
+    /**
    * Needed to scope to table component with passing to table-header component via @Input so used es6 synthax
    * function expression 
    * setup _tableService.paginatedRows and ran setPaginationState to re-build table dataset 
@@ -164,6 +114,31 @@ export class TableComponent implements OnInit {
     }
   } 
 
+
+//   refresh(state: ClrDatagridStateInterface) {
+//     this.loading = true;
+//     // We convert the filters from an array to a map,
+//     // because that's what our backend-calling service is expecting
+//     let filters:{[prop:string]: any[]} = {};
+//     if (state.filters) {
+//         for (let filter of state.filters) {
+//             let {property, value} = <{property: string, value: string}>filter;
+//             filters[property] = [value];
+//         }
+//     }
+
+//     // this.rows
+//     // .filter(filters)
+//     // .sort(<{by: string, reverse: boolean}>state.sort)
+//     // .fetch(state.page.from, state.page.size)
+//     // .then((result: FetchResult) => {
+//     //     this.users = result.users;
+//     //     this.total = result.length;
+//     //     this.loading = false;
+//     // });
+// }
+
+
   // ----------------------------
   // Init on load of component
   ngOnInit() {
@@ -172,21 +147,20 @@ export class TableComponent implements OnInit {
     this._dataService.getMovies().subscribe( movies => {
 
       // set service variables
-      this._tableService.rows = movies
+      this._tableService.rows = movies;
       // setup pagination array
       this._tableService.paginatedRows = setupPagination(movies, 10);
       this._tableService.numberOfRows = movies.length
       // keep track of paginated rows to disable next button
       this._tableService.numberOfGroupedRows = Object.keys(this._tableService.paginatedRows).length
       this._dataService.setIsDataAvailable(true);
-    
-      this.resultNumber = this._tableService.numberOfRows
-
-      // set starting state
+      this.rows = movies;
+      this.total= movies.length;
       this.setPaginationState();
-
       this.isApiConnected = true;
       this.isLoading = false;
+
+      
 
     },
 
@@ -194,10 +168,7 @@ export class TableComponent implements OnInit {
         console.log(error)
         this.isApiConnected = false;
         this.isLoading = false;
-    }
-    
-    
-    );
+    });
 
     // get columns for data setup in data.service.ts [key:string, key:string, key:string]
     this.columns = this._dataService.getColumns();

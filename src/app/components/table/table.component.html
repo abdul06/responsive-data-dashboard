@@ -9,42 +9,27 @@
       </div>
 
       <div class="table__wrapper">
-        <div class="table__options"
-          [searchTable]=searchTable
-          [rowsPerPageList]=rowsPerPageList
-          app-table-options>
-        </div>
 
-        <div class="table__container">
-          <table class="table">
-            <thead app-table-head
-              [sortRows]="sortRows">
-            </thead>
-            <!-- setup "this._dataService.isDataAvailable" to be decoupled from application -->
-            <ng-container *ngIf="this._dataService.isDataAvailable"> 
-              <tbody >
-                <tr *ngFor="let row of paginatedRows">
-                  <td *ngFor="let column of columns">{{ row[column] }}</td>
-                </tr>
-              </tbody>
-            </ng-container> 
-            <tfoot app-table-head
-              [sortRows]="sortRows">
-            </tfoot>
-          </table>
-        </div>
+        <ng-container *ngIf="this._dataService.isDataAvailable"> 
+          <clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="isLoading">
+            <clr-dg-column *ngFor="let column of columns">{{ column }}</clr-dg-column>
+            
+            <clr-dg-row *ngFor="let row of paginatedRows">
+                <clr-dg-cell *ngFor="let column of columns">{{ row[column] }}</clr-dg-cell>
+            </clr-dg-row>
+            
+            <clr-dg-footer>
+              <!-- Inside the full datagrid declaration -->
+              <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="total">
+                  {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+                  of {{pagination.totalItems}} rows
+              </clr-dg-pagination>              
+            </clr-dg-footer>
 
-        <div class="table__pagination">
-          <div class="table__results">
-            <p>Showing {{ startRange }} - {{ endRange }} of {{ resultNumber }} results</p>
-          </div>
+        </clr-datagrid>
+      </ng-container> 
 
-          <div class="table__pagination-controls">
-            <!-- nice-to-have: setup number pagination if time allowed -->
-            <button class="btn btn-primary" (click)="previous()">previous</button> 
-            <button class="btn btn-primary" (click)="next()">next</button>
-          </div>
-        </div>
+
 
       </div>
     </div>
