@@ -1,5 +1,7 @@
 # Add clarity
 - ng add @clr/angular (if angular 6+ with angular cli)
+# advanced table setup
+- https://v2.clarity.design/datagrid/structure
 
 
 - https://v2.clarity.design/

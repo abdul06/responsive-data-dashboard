@@ -1,6 +1,10 @@
 
-<tr
-  app-table-header
-  [sortRows]="sortRows"
-  [columns]="columns">
+<tr>
+  <th *ngFor="let column of columns"
+    (click)="sortRows(column)"
+    class="table__heading"
+  >
+    {{ column }} 
+    <i class="fa fa-arrows-v table__sort-icon"></i>
+  </th>
 </tr>

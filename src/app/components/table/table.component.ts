@@ -5,10 +5,9 @@ import { setupPagination, sortByObjectValue } from '../../../utils/utils';
 import { mockData } from '../../../utils/mock';
 
 @Component({
-  selector: '[app-table]',
+  selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
-  host: {'class': 'table movie-table'}
 })
 export class TableComponent implements OnInit {
   constructor(public _dataService: DataService, public _tableService: TableService) { 

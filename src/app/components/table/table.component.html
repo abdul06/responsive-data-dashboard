@@ -16,16 +16,16 @@
         </div>
 
         <div class="table__container">
-          <table class="table__data">
+          <table class="table">
             <thead app-table-head
               [sortRows]="sortRows">
             </thead>
             <!-- setup "this._dataService.isDataAvailable" to be decoupled from application -->
             <ng-container *ngIf="this._dataService.isDataAvailable"> 
-              <tbody app-table-body 
-                [paginatedRows]="paginatedRows"
-                [columns]="columns"
-                [paginatedPage]="paginatedPage">
+              <tbody >
+                <tr *ngFor="let row of paginatedRows">
+                  <td *ngFor="let column of columns">{{ row[column] }}</td>
+                </tr>
               </tbody>
             </ng-container> 
             <tfoot app-table-head
@@ -41,8 +41,8 @@
 
           <div class="table__pagination-controls">
             <!-- nice-to-have: setup number pagination if time allowed -->
-            <button class="btn btn__pagination btn__previous" (click)="previous()">previous</button> 
-            <button class="btn btn__pagination btn__next" (click)="next()">next</button>
+            <button class="btn btn-primary" (click)="previous()">previous</button> 
+            <button class="btn btn-primary" (click)="next()">next</button>
           </div>
         </div>
 

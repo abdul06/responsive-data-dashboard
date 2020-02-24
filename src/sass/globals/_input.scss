@@ -1,23 +1,19 @@
 
-.input {
+// .table {
+//   &__search-input {
+//     margin-left: 10px;
+//     padding: 0 10px;
+//     height: 34px;
+//     color: $color-dk-grey;
+//     border: 1px solid $color-grey;
+//     background: $color-white;
+//     box-shadow: inset 1px 1px 3px #f6f6f6;
+//     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+//     border-radius: 6px;
 
-}
-
-.table {
-  &__search-input {
-    margin-left: 10px;
-    padding: 0 10px;
-    height: 34px;
-    color: $color-dk-grey;
-    border: 1px solid $color-grey;
-    background: $color-white;
-    box-shadow: inset 1px 1px 3px #f6f6f6;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    border-radius: 6px;
-
-    &:focus {
-      color: $color-black;
-      border-color: $color-blue;
-    }
-  }
-}
+//     &:focus {
+//       color: $color-black;
+//       border-color: $color-blue;
+//     }
+//   }
+// }

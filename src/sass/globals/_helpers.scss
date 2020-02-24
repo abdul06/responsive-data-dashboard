@@ -14,31 +14,9 @@
   flex-wrap: nowrap;
 }
 
-.h-flex-1 {
-  width: calc(100%/1);
-}
-
-.h-flex-2 {
-  width: calc(100%/2);
-}
-.h-flex-3 {
-  width: calc(100%/3);
-}
-.h-flex-4 {
-  width: calc(100%/4);
-}
-.h-flex-5 {
-  width: calc(100%/5);
-}
-.h-flex-6 {
-  width: calc(100%/6);
-}
-
-
-// justify-content
 .h-justify-content-center {
   justify-content: center;
-}
+} // .h-justify-content-center
 
 .h-justify-content {
 
