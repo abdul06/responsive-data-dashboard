@@ -1,7 +1,5 @@
   <tr
     *ngFor="let row of paginatedRows" 
-    app-table-row
-    [row]="row"
-    [columns]="columns"
     >
+    <td *ngFor="let column of columns">{{ row[column] }}</td>
   </tr>

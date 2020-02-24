@@ -6,13 +6,14 @@ import { DashboardsComponent } from './components/dashboards/dashboards.componen
 import { TableComponent } from './components/table/table.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DataService } from './services/data.service';
-import { TableRowComponent } from './components/table-row/table-row.component';
 import { TableHeadComponent } from './components/table-head/table-head.component';
 import { TableBodyComponent } from './components/table-body/table-body.component';
 import { TableHeaderComponent } from './components/table-header/table-header.component';
 import { TablePaginationComponent } from './components/table-pagination/table-pagination.component';
 import { TableService } from './services/table.service';
 import { TableOptionsComponent } from './components/table-options/table-options.component';
+import { ClarityModule } from '@clr/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,6 @@ import { TableOptionsComponent } from './components/table-options/table-options.
     DashboardsComponent,
     TableComponent,
     DashboardComponent,
-    TableRowComponent,
     TableHeadComponent,
     TableBodyComponent,
     TableHeaderComponent,
@@ -29,7 +29,9 @@ import { TableOptionsComponent } from './components/table-options/table-options.
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ClarityModule,
+    BrowserAnimationsModule
   ],
   providers: [DataService, TableService],
   bootstrap: [AppComponent]
