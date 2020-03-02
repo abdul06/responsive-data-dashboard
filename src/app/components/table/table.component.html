@@ -11,8 +11,14 @@
       <div class="table__wrapper">
 
         <ng-container *ngIf="this._dataService.isDataAvailable"> 
-          <clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="isLoading">
-            <clr-dg-column *ngFor="let column of columns">{{ column }}</clr-dg-column>
+          <clr-datagrid [clrDgLoading]="isLoading">
+            <clr-dg-column *ngFor="let column of columns" [clrDgField]="column">
+              <ng-container *clrDgHideableColumn="{hidden: false}">
+                {{ column }}
+              </ng-container>
+            </clr-dg-column>
+
+            <clr-dg-placeholder>We couldn't find any shows!</clr-dg-placeholder>
             <!-- *ngFor when server driven table interaction -->
             <!-- *clrDgItems built in if all data on client -->
             <clr-dg-row *clrDgItems="let row of rows">
@@ -20,11 +26,16 @@
             </clr-dg-row>
             
             <clr-dg-footer>
+              <!-- Optional customization of hide/show columns toggle -->
+              <clr-dg-column-toggle>
+                <clr-dg-column-toggle-title>Toggle Columns</clr-dg-column-toggle-title>
+                <clr-dg-column-toggle-button>Select Item</clr-dg-column-toggle-button>
+              </clr-dg-column-toggle>
               <!-- Inside the full datagrid declaration -->
               <clr-dg-pagination #pagination [clrDgPageSize]="10">
                 {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
                 of {{pagination.totalItems}} rows
-                <clr-dg-page-size [clrPageSizeOptions]=rowsPerPageList>Rows per page</clr-dg-page-size>
+                <clr-dg-page-size [clrPageSizeOptions]=rowsPerPageList>Shows per page</clr-dg-page-size>
               </clr-dg-pagination>              
             </clr-dg-footer>
 
