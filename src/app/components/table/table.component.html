@@ -13,16 +13,18 @@
         <ng-container *ngIf="this._dataService.isDataAvailable"> 
           <clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="isLoading">
             <clr-dg-column *ngFor="let column of columns">{{ column }}</clr-dg-column>
-            
-            <clr-dg-row *ngFor="let row of paginatedRows">
+            <!-- *ngFor when server driven table interaction -->
+            <!-- *clrDgItems built in if all data on client -->
+            <clr-dg-row *clrDgItems="let row of rows">
                 <clr-dg-cell *ngFor="let column of columns">{{ row[column] }}</clr-dg-cell>
             </clr-dg-row>
             
             <clr-dg-footer>
               <!-- Inside the full datagrid declaration -->
-              <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="total">
-                  {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-                  of {{pagination.totalItems}} rows
+              <clr-dg-pagination #pagination [clrDgPageSize]="10">
+                {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+                of {{pagination.totalItems}} rows
+                <clr-dg-page-size [clrPageSizeOptions]=rowsPerPageList>Rows per page</clr-dg-page-size>
               </clr-dg-pagination>              
             </clr-dg-footer>
 
