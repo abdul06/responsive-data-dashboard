@@ -1,0 +1,26 @@
+<div class="form-container">
+
+  <div class="form-container__inner">
+
+    <form clrForm>
+
+      <clr-input-container>
+          <label>Full Name</label>
+          <input placeholder="Full name" clrInput type="text"  name="example" required/>
+          <clr-icon class="clr-validate-icon" shape="exclamation-circle"></clr-icon>
+          <clr-control-helper>Enter Full name please</clr-control-helper>
+          <clr-control-error>>We need your first name for legal compliance</clr-control-error>
+      </clr-input-container>
+
+      <clr-input-container>
+          <label>Phone Number</label>
+          <input clrInput type="text" name="example" />
+      </clr-input-container>
+
+      <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
+      <button class="btn" type="button" (click)="resetForm()">Reset</button>
+    </form>
+
+  </div>
+
+</div>

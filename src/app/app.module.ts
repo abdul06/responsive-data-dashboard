@@ -9,6 +9,7 @@ import { DataService } from './services/data.service';
 import { TableService } from './services/table.service';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormComponent } from './components/form/form.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardsComponent,
     TableComponent,
     DashboardComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,

@@ -44,7 +44,7 @@ export class TableComponent implements OnInit {
     },
 
     error => {
-        console.log(error)
+        console.log(error);
         this.isApiConnected = false;
         this.isLoading = false;
     });

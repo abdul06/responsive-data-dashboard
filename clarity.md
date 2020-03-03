@@ -21,3 +21,7 @@
 - https://medium.com/@rwpatel/building-with-the-clarity-design-system-2b11d446e94
 
 - https://www.youtube.com/watch?v=8J4b_GqHN90
+
+# form
+- https://stackblitz.com/edit/clarity-light-theme-v013-form-reset-workaround?file=src%2Fapp%2Fapp.component.html
+- https://stackblitz.com/edit/prototype-clarity-forms-redux?file=app%2Fapp.component.html
